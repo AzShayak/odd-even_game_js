@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd-Even Game!</title>
+    <style>
+        div {
+            text-align: center;
+            width: 440px;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>Choose a number between 1 and 2.<br>
+            The computer will also choose a number randomly.<br>
+            If the sum of your and computer's number is EVEN,<br>
+            then you win, and if its ODD the you loose.
+            <br><br>Pick a number
+        </p>
+        <button onclick="giveOne()">1</button>
+        <button onclick="giveTow()">2</button>
+        <h2 id="winner"></h2>
+    </div>
+</body>
+
+<script>
+    let info = document.querySelector("#winner");
+
+    function giveOne() { calc(1) };
+    function giveTow() { calc(2) };
+
+    function calc(player) {
+        const computer = (Math.floor(Math.random() * 2) + 1);
+
+        let message = `You : ${player}\nComputer: ${computer}\n`;
+
+        if ((player + computer) % 2 === 0) {
+            message += `\nYou win!`
+        } else {
+            message += `\nYou loose`
+        }
+        info.innerText = message;
+    }
+</script>
+
+</html>
